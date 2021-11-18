@@ -12,44 +12,36 @@ namespace Yatzy
     /// </summary>
     internal class Die
     {
-        /// <summary>
-        /// Holds the die, preventing it from being
-        /// rolled when the player does their next roll
-        /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
-        public void Keep()
+        public Die()
         {
-            throw new NotImplementedException();
+            _ = Roll();
         }
 
         /// <summary>
-        /// Unholds the die, so it can be rolled again
+        /// The hold status of the die
         /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
-        public void UnKeep()
-        {
-            throw new NotImplementedException();
-        }
+        public bool IsHeld { get; set; }
 
         /// <summary>
-        /// Returns the current face value of the die
+        /// The current face value of the die
         /// </summary>
-        /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
-        public byte GetFaceValue()
-        {
-            throw new NotImplementedException();
-        }
+        public byte FaceValue { get; private set; }
 
         /// <summary>
-        /// Roll return a random number between 1 and 6
+        /// Rolls the Die and returns a random number between 1 and 6
         /// If the die is held, it will keep the current value.
         /// </summary>
-        /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
+        /// <returns>A value between 1 and 6 (inclusive)</returns>
         public byte Roll()
         {
-            throw new NotImplementedException();
+            if (IsHeld)
+            {
+                return FaceValue;
+            }
+            var rand = new Random();
+            byte randNum = Convert.ToByte(rand.Next(6) + 1);
+            FaceValue = randNum;
+            return randNum;
         }
     }
 }
