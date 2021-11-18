@@ -43,6 +43,7 @@ namespace Yatzy
 
         /// <summary>
         /// Roll return a random number between 1 and 6
+        /// If the die is held, it will keep the current value.
         /// </summary>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
